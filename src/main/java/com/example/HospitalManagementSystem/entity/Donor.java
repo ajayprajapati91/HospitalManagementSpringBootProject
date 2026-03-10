@@ -19,7 +19,6 @@ public class Donor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "donor_id")
     private Long donorId ;
-  //  private Long userId;
     private String  bloodGroup;
     private Integer  age;
     private String gender;
