@@ -1,5 +1,6 @@
 package com.example.HospitalManagementSystem.proxy.responseProxy;
 
+import com.example.HospitalManagementSystem.enums.StatusEnum;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,4 +35,9 @@ public class UserResponseProxy {
     @Pattern(regexp = "^[6789]\\d{9}$", message = "Invalid contact number format. Must be 10 digits and start with 6, 7, 8, or 9.")
     @NotBlank(message = "contact number should not be blank")
     private String phoneNo;
+
+    @NotBlank(message = "username is mandatory")
+    private String username;
+
+    private StatusEnum Status;
 }

@@ -9,14 +9,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class DonorResponseProxy {
-    private Long id ;
-    private Long userId;
+    private Long donorId ;
 
     @NotBlank(message = "Blood group cannot be empty")
     @Pattern(regexp = "^(?:AB|A|B|O)[+-]$", message = "Invalid blood group format. Use format like 'A+' or 'O-'")
@@ -36,5 +36,11 @@ public class DonorResponseProxy {
 
     @Pattern(regexp = "^(true|false)$",
             message = "Availability must be 'true' or 'false'")
+
     private String available;
+
+    private Long usersId;
+    private List<Long> donationId;
+
+
 }

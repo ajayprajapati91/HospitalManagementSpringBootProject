@@ -26,7 +26,7 @@ public class Security {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth.
-                        requestMatchers("/auth/register","/auth/login","/auth/forgot").permitAll()
+                        requestMatchers("/user/register","/user/login","/user/forgot").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/donor/**").hasAnyAuthority("DONOR", "ADMIN")
                         .requestMatchers("/hospital/**").hasAnyAuthority("HOSPITAL","ADMIN")

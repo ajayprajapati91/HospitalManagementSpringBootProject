@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class DonorRequestProxy {
-    private Long donorId ;
     private String  bloodGroup;
+    private UserRequestProxy user;
 }

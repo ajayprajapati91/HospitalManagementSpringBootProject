@@ -20,7 +20,6 @@ public class BloodRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bloodRequest_id")
     private Long bloodRequestId;
-    private String hospitalId;
     private String bloodGroup;
     private Integer quantity;
     private LocalDateTime requestDate;

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class BloodRequestRequestProxy {
-    private Long bloodRequestId;
     private String bloodGroup;
     private Integer quantity;
+
+    private HospitalRequestProxy hospitalRequestProxy;
 }

@@ -31,11 +31,6 @@ public class Donor {
     @JoinColumn(name = "users_id")
     private Users users;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hospital_id")
-    private List<Hospital> hospitalList;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bloodBank_id")
-    private List<Donation> donationList;
+    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
+    private List<Donation> donation;
 }

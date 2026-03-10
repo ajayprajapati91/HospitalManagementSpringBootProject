@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Builder
 public class BloodRequestResponseProxy {
     private Long bloodRequestId;
-    private String hospitalId;
 
     @NotBlank(message = "Blood group cannot be empty")
     @Pattern(regexp = "^(?:AB|A|B|O)[+-]$", message = "Invalid blood group format. Use format like 'A+' or 'O-'")
@@ -31,4 +30,6 @@ public class BloodRequestResponseProxy {
 
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
+
+    private Long hospitalId;
 }

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BloodBankRepo extends JpaRepository<Donation,Long> {
+public interface DonationRepo extends JpaRepository<Donation,Long> {
 }

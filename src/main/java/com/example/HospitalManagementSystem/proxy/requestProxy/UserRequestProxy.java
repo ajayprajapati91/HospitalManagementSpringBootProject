@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UserRequestProxy {
-    private Long userId;
     private String name;
-    private String role1;
+    private String role;
 }

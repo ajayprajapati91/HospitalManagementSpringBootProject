@@ -20,6 +20,7 @@ public class Users {
     @Column(name = "user_id")
     private Long userId;
     private String name;
+    private String username;
     private String email;
     private String password;
     private String role;
@@ -28,16 +29,10 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private StatusEnum Status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hospital_id")
-    private Hospital hospital;
+    @OneToOne(mappedBy = "users")
+    private Donor donorId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "donor_id")
-    private Donor donor;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "donation_id")
-    private Donation donation;
+    @OneToOne(mappedBy = "users")
+    private Hospital hospitalId;
 
 }

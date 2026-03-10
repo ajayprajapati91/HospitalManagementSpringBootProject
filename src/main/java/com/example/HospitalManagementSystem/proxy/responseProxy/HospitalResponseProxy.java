@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,4 +36,7 @@ public class HospitalResponseProxy {
     @Pattern(regexp = "^[6789]\\d{9}$", message = "Invalid contact number format. Must be 10 digits and start with 6, 7, 8, or 9.")
     @NotBlank(message = "contact number should not be blank")
     private String contactNo;
+
+    private Long userId;
+    private List<Long> bloodRequestId;
 }

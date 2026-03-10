@@ -24,15 +24,11 @@ public class Hospital {
     private String address;
     private String contactNo;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "donor_id")
-    private List<Donor> donorList;
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private List<Users> usersList;
+    private Users users;
 
-    @OneToMany(mappedBy = "hospital",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
     private List<BloodRequest> bloodRequestList;
 
 }

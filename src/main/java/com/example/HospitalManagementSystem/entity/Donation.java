@@ -17,31 +17,15 @@ import java.util.List;
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bloodBank_id")
+    @Column(name = "donation_id")
     private Long donationId;
     private String bloodGroup;
     private double unitsAvailable;
     private LocalDateTime lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bloodStock_id")
-    private List<BloodStock> bloodStockList;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hospital_id")
-    private List<Hospital> hospitalList;
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "donor_id")
-    private List<Donor> donorList;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bloodRequest_id")
-    private List<BloodRequest> bloodRequestList;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private List<Users> usersList;
+    private Donor donor;
 
 
 }

@@ -1,7 +1,7 @@
 package com.example.HospitalManagementSystem.service.implementation;
 
-import com.interns.SpringSecuritydemo.domain.Student;
-import com.interns.SpringSecuritydemo.repo.StudentRepo;
+import com.example.HospitalManagementSystem.entity.Users;
+import com.example.HospitalManagementSystem.repository.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -18,22 +18,22 @@ import java.util.Optional;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private StudentRepo stdRepo;
+    private UsersRepo usersRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Student> byUsername =  stdRepo.findByUsername(username);
+        Optional<Users> byUsername =  usersRepo.findByUsername(username);
         if(byUsername.isPresent()){
-            Student student = byUsername.get();
+            Users users = byUsername.get();
 
-            String roleString = student.getRoles();
+            String roleString = users.getRole();
             String[] split = roleString.split(",");
 
             List<SimpleGrantedAuthority> list = Arrays.stream(split).map(r -> new SimpleGrantedAuthority(r)).toList();
 
             return User.builder()
-                    .username(student.getUsername())
-                    .password(student.getPassword())
+                    .username(users.getUsername())
+                    .password(users.getPassword())
                     .authorities(list)
                     .build();
         }

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class HospitalRequestProxy {
-    private Long hospitalId;
     private String hospitalName;
+    private UserRequestProxy user;
 }
