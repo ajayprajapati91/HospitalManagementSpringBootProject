@@ -27,4 +27,5 @@ public class UserController {
     public ResponseEntity<AuthResp> login(@Valid @RequestBody AuthReq authReq){
         return new ResponseEntity<>(userManagementService.authenticate(authReq),HttpStatus.OK);
     }
+
 }
