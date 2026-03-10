@@ -31,7 +31,7 @@ public class Security {
                         .requestMatchers("/donor/**").hasAnyAuthority("DONOR", "ADMIN")
                         .requestMatchers("/hospital/**").hasAnyAuthority("HOSPITAL","ADMIN")
                         .requestMatchers("/user/**").hasAnyAuthority("USER","HOSPITAL","ADMIN")
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())

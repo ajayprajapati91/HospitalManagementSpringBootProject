@@ -1,6 +1,8 @@
 package com.example.HospitalManagementSystem.controller;
 
 import com.example.HospitalManagementSystem.entity.Users;
+import com.example.HospitalManagementSystem.model.AuthReq;
+import com.example.HospitalManagementSystem.model.AuthResp;
 import com.example.HospitalManagementSystem.proxy.responseProxy.UserResponseProxy;
 import com.example.HospitalManagementSystem.service.UserManagementService;
 import jakarta.validation.Valid;
@@ -19,5 +21,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserResponseProxy userResponseProxy){
         return new ResponseEntity<>(userManagementService.register(userResponseProxy), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResp> login(@Valid @RequestBody AuthReq authReq){
+        return new ResponseEntity<>(userManagementService.authenticate(authReq),HttpStatus.OK);
     }
 }

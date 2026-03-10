@@ -40,31 +40,23 @@ public class UserManagementServiceImpl implements UserManagementService {
 
     @Override
     public String register(UserResponseProxy userResponseProxy) {
+        userResponseProxy.setPassword(passwordEncoder.encode(userResponseProxy.getPassword()));
         Users users = mapperHelper.proxyToEntityUsers(userResponseProxy);
         usersRepo.save(users);
         return "User registered successfully";
     }
 
     @Override
-    public AuthResp login(AuthReq authReq) {
-        return null;
-    }
-
-    @Override
-    public UserResponseProxy updateUser(Long id, UserResponseProxy userResponseProxy) {
-        return null;
-    }
-    @Override
-    public AuthResp authentication(AuthReq authReq) {
+    public AuthResp authenticate(AuthReq authReq) {
 
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword()));
-        if(authenticate.isAuthenticated()){
+        if (authenticate.isAuthenticated()) {
             UserDetails userDetails = myUserDetailsService.loadUserByUsername(authReq.getUsername());
 
             Date expiredOn = new Date();
-            expiredOn.setTime(expiredOn.getTime()+1000*60*60*5);
-            System.out.println("Expiry DateTime ->"+expiredOn);
-            String jwtToken = jwtUtil.generateToken(userDetails,expiredOn);
+            expiredOn.setTime(expiredOn.getTime() + 1000 * 60 * 60 * 5);
+            System.out.println("Expiry DateTime ->" + expiredOn);
+            String jwtToken = jwtUtil.generateToken(userDetails, expiredOn);
 
             return AuthResp.builder()
                     .token(jwtToken)
@@ -74,4 +66,12 @@ public class UserManagementServiceImpl implements UserManagementService {
         }
         return null;
     }
+
+
+    @Override
+    public UserResponseProxy updateUser(Long id, UserResponseProxy userResponseProxy) {
+        return null;
+    }
+
 }
+

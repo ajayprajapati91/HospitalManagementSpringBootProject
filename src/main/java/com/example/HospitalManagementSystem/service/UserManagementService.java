@@ -6,11 +6,10 @@ import com.example.HospitalManagementSystem.model.AuthResp;
 import com.example.HospitalManagementSystem.proxy.responseProxy.UserResponseProxy;
 
 public interface UserManagementService {
-    AuthResp authentication(AuthReq authReq);
 
     String register(UserResponseProxy userResponseProxy);
 
-    AuthResp login(AuthReq authReq);
+    AuthResp authenticate(AuthReq authReq);
 
     UserResponseProxy updateUser(Long id, UserResponseProxy userResponseProxy);
 

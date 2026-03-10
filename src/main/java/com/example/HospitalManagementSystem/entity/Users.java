@@ -29,7 +29,7 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private StatusEnum Status;
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "users",cascade = CascadeType.ALL)
     private Donor donorId;
 
     @OneToOne(mappedBy = "users")

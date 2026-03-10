@@ -23,8 +23,8 @@ public class UserResponseProxy {
 
     @NotBlank
     @Size(min = 6,max = 10,message = "Password Should be between 6 and 10 characters")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\\-+=])(?=\\S+$).{8,128}$",
-            message = "Password must meet complexity requirements")
+//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\\-+=])(?=\\S+$).{8,128}$",
+//            message = "Password must meet complexity requirements")
     private String password;
 
     @NotBlank(message = "Role is mandatory")

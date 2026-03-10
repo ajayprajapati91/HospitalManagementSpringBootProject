@@ -36,6 +36,7 @@ public class MyUserDetailsService implements UserDetailsService {
                     .password(users.getPassword())
                     .authorities(list)
                     .build();
+
         }
         throw new UsernameNotFoundException("Student not found"+username);
     }
