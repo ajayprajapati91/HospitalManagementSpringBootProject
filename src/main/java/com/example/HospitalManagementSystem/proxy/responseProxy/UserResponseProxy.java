@@ -1,6 +1,10 @@
 package com.example.HospitalManagementSystem.proxy.responseProxy;
 
+import com.example.HospitalManagementSystem.entity.Donor;
+import com.example.HospitalManagementSystem.entity.Hospital;
 import com.example.HospitalManagementSystem.enums.StatusEnum;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,5 +43,11 @@ public class UserResponseProxy {
     @NotBlank(message = "username is mandatory")
     private String username;
 
-    private StatusEnum Status;
+    private StatusEnum status;
+
+    @OneToOne(mappedBy = "users",cascade = CascadeType.ALL)
+    private Donor donorId;
+
+    @OneToOne(mappedBy = "users")
+    private Hospital hospitalId;
 }

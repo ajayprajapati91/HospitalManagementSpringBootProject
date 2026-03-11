@@ -1,5 +1,9 @@
 package com.example.HospitalManagementSystem.proxy.responseProxy;
 
+import com.example.HospitalManagementSystem.entity.Users;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,4 +43,8 @@ public class HospitalResponseProxy {
 
     private Long userId;
     private List<Long> bloodRequestId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private Users users;
 }

@@ -10,4 +10,12 @@ public interface DonorService {
     DonorResponseProxy getDonor(Long donorId);
 
     Boolean isEligible(DonorResponseProxy donorResponseProxy);
+
+    DonorResponseProxy updateCurrentDonorProfile(Long donorId, DonorResponseProxy donorResponseProxy);
+
+    DonorResponseProxy getCurrentDonorProfile();
+
+    Boolean checkCurrentDonorEligibility();
+
+    String updateAvailability(Boolean available);
 }

@@ -13,5 +13,5 @@ public class BloodRequestRequestProxy {
     private String bloodGroup;
     private Integer quantity;
 
-    private HospitalRequestProxy hospitalRequestProxy;
+    private Long hospitalId;
 }

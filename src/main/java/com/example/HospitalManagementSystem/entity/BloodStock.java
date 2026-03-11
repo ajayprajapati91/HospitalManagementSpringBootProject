@@ -1,5 +1,6 @@
 package com.example.HospitalManagementSystem.entity;
 
+import com.example.HospitalManagementSystem.enums.BloodGroup;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,8 +19,9 @@ public class BloodStock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bloodStock_id")
     private Long bloodStockId;
-    private String bloodGroup;
-    private double unitsAvailable;
+    @Enumerated(EnumType.STRING)
+    private BloodGroup bloodGroup;
+    private Integer unitsAvailable;
     private LocalDateTime lastUpdated;
 
 }

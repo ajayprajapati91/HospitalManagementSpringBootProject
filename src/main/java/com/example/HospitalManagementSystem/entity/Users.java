@@ -1,6 +1,7 @@
 package com.example.HospitalManagementSystem.entity;
 
 import com.example.HospitalManagementSystem.enums.StatusEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,11 +28,13 @@ public class Users {
     private String phoneNo;
 
     @Enumerated(EnumType.STRING)
-    private StatusEnum Status;
+    private StatusEnum status;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "users",cascade = CascadeType.ALL)
     private Donor donorId;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "users")
     private Hospital hospitalId;
 

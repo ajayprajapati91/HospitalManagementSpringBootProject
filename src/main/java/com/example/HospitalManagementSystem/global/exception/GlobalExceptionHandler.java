@@ -1,5 +1,6 @@
 package com.example.HospitalManagementSystem.global.exception;
 
+import com.example.HospitalManagementSystem.customizedException.BloodStockNotFoundException;
 import com.example.HospitalManagementSystem.customizedException.DonorNotFoundException;
 import com.example.HospitalManagementSystem.customizedException.UserNotFoundException;
 import com.example.HospitalManagementSystem.exception.Response;
@@ -42,6 +43,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DonorNotFoundException.class )
     public ResponseEntity<Response> donorNotFoundException(DonorNotFoundException ex, HttpServletRequest req){
+        Response res = new Response();
+
+        res.setMessage(ex.getMessage());
+        res.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        res.setDateTime(LocalDateTime.now());
+        res.setPath(req.getRequestURI());
+
+        return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(BloodStockNotFoundException.class )
+    public ResponseEntity<Response> bloodStockNotFoundException(BloodStockNotFoundException ex, HttpServletRequest req){
         Response res = new Response();
 
         res.setMessage(ex.getMessage());

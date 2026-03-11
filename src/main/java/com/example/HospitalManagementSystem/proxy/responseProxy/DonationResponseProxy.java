@@ -1,5 +1,8 @@
 package com.example.HospitalManagementSystem.proxy.responseProxy;
 
+import com.example.HospitalManagementSystem.enums.BloodGroup;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -18,7 +21,8 @@ public class DonationResponseProxy {
 
     @NotBlank(message = "Blood group cannot be empty")
     @Pattern(regexp = "^(?:AB|A|B|O)[+-]$", message = "Invalid blood group format. Use format like 'A+' or 'O-'")
-    private String bloodGroup;
+    @Enumerated(EnumType.STRING)
+    private BloodGroup bloodGroup;
 
     private double unitsAvailable;
     private LocalDateTime lastUpdated;

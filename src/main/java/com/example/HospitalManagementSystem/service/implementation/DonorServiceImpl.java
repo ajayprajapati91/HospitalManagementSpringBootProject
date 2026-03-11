@@ -62,4 +62,46 @@ public class DonorServiceImpl implements DonorService {
                 donatedSinceMonths >=3;
 
     }
+
+    @Override
+    public DonorResponseProxy updateCurrentDonorProfile(Long donorId, DonorResponseProxy donorResponseProxy) {
+        Optional<Donor> byId = donorRepo.findById(donorId);
+        if (byId.isEmpty()){
+            throw new DonorNotFoundException("Donor not found with this id :"+donorId,HttpStatus.NOT_FOUND.value());
+        }
+        Donor donor = byId.get();
+        donor.setAge(donorResponseProxy.getAge());
+        donor.setCity(donorResponseProxy.getCity());
+        donor.setAvailable(donorResponseProxy.getAvailable());
+        donor.setGender(donorResponseProxy.getGender());
+        donor.setLastDonationDate(donorResponseProxy.getLastDonationDate());
+
+        Users users = donor.getUsers();
+        users.setName(donorResponseProxy.getUsers().getName());
+        users.setEmail(donorResponseProxy.getUsers().getEmail());
+        users.setRole(donorResponseProxy.getUsers().getRole());
+        users.setPhoneNo(donorResponseProxy.getUsers().getPhoneNo());
+        users.setStatus(donorResponseProxy.getUsers().getStatus());
+        users.setUsername(donorResponseProxy.getUsers().getUsername());
+        users.setPassword(donorResponseProxy.getUsers().getPassword());
+
+        donor.setUsers(users);
+        return mapperHelper.entityToProxyDonor(donorRepo.save(donor));
+    }
+
+    @Override
+    public DonorResponseProxy getCurrentDonorProfile() {
+
+        return null;
+    }
+
+    @Override
+    public Boolean checkCurrentDonorEligibility() {
+        return null;
+    }
+
+    @Override
+    public String updateAvailability(Boolean available) {
+        return "";
+    }
 }

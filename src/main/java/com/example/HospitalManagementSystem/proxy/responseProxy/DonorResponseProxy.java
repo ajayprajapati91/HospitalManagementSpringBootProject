@@ -1,5 +1,8 @@
 package com.example.HospitalManagementSystem.proxy.responseProxy;
 
+import com.example.HospitalManagementSystem.entity.Users;
+import com.example.HospitalManagementSystem.enums.BloodGroup;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -18,11 +21,9 @@ import java.util.List;
 public class DonorResponseProxy {
     private Long donorId ;
 
-    @NotBlank(message = "Blood group cannot be empty")
-    @Pattern(regexp = "^(?:AB|A|B|O)[+-]$", message = "Invalid blood group format. Use format like 'A+' or 'O-'")
-    private String  bloodGroup;
+    @Enumerated(EnumType.STRING)
+    private BloodGroup bloodGroup;
 
-    @NotBlank(message = "Age is required")
     private Integer  age;
 
     @NotBlank(message = "Gender cannot be empty")
@@ -34,11 +35,11 @@ public class DonorResponseProxy {
     @NotNull(message = "Last Donation date cannot be null")
     private LocalDateTime lastDonationDate;
 
-    @Pattern(regexp = "^(true|false)$",
-            message = "Availability must be 'true' or 'false'")
+    private Boolean available;
 
-    private String available;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_id")
+    private Users users;
     private Long usersId;
     private List<Long> donationId;
 

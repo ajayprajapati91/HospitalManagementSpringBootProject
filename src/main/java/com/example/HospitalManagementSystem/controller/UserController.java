@@ -1,6 +1,5 @@
 package com.example.HospitalManagementSystem.controller;
 
-import com.example.HospitalManagementSystem.entity.Users;
 import com.example.HospitalManagementSystem.model.AuthReq;
 import com.example.HospitalManagementSystem.model.AuthResp;
 import com.example.HospitalManagementSystem.proxy.responseProxy.UserResponseProxy;
@@ -22,6 +21,7 @@ public class UserController {
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserResponseProxy userResponseProxy){
         return new ResponseEntity<>(userManagementService.register(userResponseProxy), HttpStatus.OK);
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<AuthResp> login(@Valid @RequestBody AuthReq authReq){
